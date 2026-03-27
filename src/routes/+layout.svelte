@@ -25,9 +25,16 @@
 	}
 
 	.app-locked {
-		height: 100vh;
-		max-height: 100vh;
-		overflow: hidden;
+		height: auto;
+		overflow: auto;
+	}
+
+	@media (min-width: 1024px) {
+		.app-locked {
+			height: 100vh;
+			max-height: 100vh;
+			overflow: hidden;
+		}
 	}
 
 	main {

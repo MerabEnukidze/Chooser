@@ -120,8 +120,8 @@
 		<div class="flex flex-col lg:flex-row gap-4 lg:gap-6 flex-1 min-h-0 pb-4">
 
 			<!-- Mood Cards Grid -->
-			<div class="flex-[2.5] min-w-0 h-full">
-				<div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5 md:gap-3 h-full grid-rows-2">
+			<div class="flex-[2.5] min-w-0 lg:h-full">
+				<div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5 md:gap-3 lg:h-full lg:grid-rows-2">
 					{#each moods as mood, i}
 						<button
 							on:click={() => toggleMood(mood.id)}
@@ -254,8 +254,14 @@
 	/* Page fills exactly the space between header and footer — no scroll */
 	.moods-page {
 		flex: 1;
-		overflow: hidden;
+		overflow: visible;
 		background: #f9fafb;
+	}
+
+	@media (min-width: 1024px) {
+		.moods-page {
+			overflow: hidden;
+		}
 	}
 	.moods-page > div {
 		height: 100%;
@@ -263,6 +269,7 @@
 
 	/* ===== Mood Card States ===== */
 	.mood-card {
+		min-height: 120px;
 		transition: transform 0.3s ease, box-shadow 0.3s ease;
 	}
 	.mood-card:hover {
