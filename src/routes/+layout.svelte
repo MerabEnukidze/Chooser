@@ -1,15 +1,17 @@
 <script>
 	import Header from '$lib/Header.svelte';
-	import './styles.css';
 	import '../app.css';
 	import Meta from "$lib/Meta.svelte";
-	import Footer from '$lib//Footer.svelte';
+	import Footer from '$lib/Footer.svelte';
+	import { page } from '$app/stores';
+
+	$: isMoods = $page.url.pathname === '/moods';
 </script>
 
-<div class="app">
-	<Header />
+<div class="app" class:app-locked={isMoods}>
 	<Meta />
-	<main class='w-full'>
+	<Header />
+	<main class="w-full">
 		<slot />
 	</main>
 	<Footer />
@@ -22,11 +24,16 @@
 		min-height: 100vh;
 	}
 
+	.app-locked {
+		height: 100vh;
+		max-height: 100vh;
+		overflow: hidden;
+	}
+
 	main {
 		flex: 1;
 		display: flex;
 		flex-direction: column;
-		margin: 0 auto;
-		box-sizing: border-box;
+		min-height: 0;
 	}
 </style>
